@@ -1,0 +1,41 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+<changeSet id="create-products-table" author="me">
+  <createTable tableName="products">
+    <column name="product_id" type="BIGINT" autoIncrement="true">
+      <constraints primaryKey="true" nullable="false"/>
+    </column>
+    <column name="product_name" type="VARCHAR(255)">
+      <constraints nullable="false"/>
+    </column>
+    <column name="sku" type="VARCHAR(255)">
+      <constraints nullable="false"/>
+    </column>
+    <column name="product_description" type="VARCHAR(255)">
+      <constraints nullable="true"/>
+    </column>
+  </createTable>
+
+  <insert tableName="products">
+    <column name="product_name" value="Red Shoe"/>
+    <column name="sku" value="SKU123"/>
+    <column name="product_description" value="These shoes are very red"/>
+  </insert>
+  
+  <insert tableName="products">
+    <column name="product_name" value="Green Shoe"/>
+    <column name="sku" value="SKU456"/>
+    <column name="product_description" value="Some green shoes"/>
+  </insert>
+  
+  <insert tableName="products">
+    <column name="product_name" value="Blue Shoe"/>
+    <column name="sku" value="SKU789"/>
+    <column name="product_description" value="This is a blue shoe"/>
+  </insert>  
+</changeSet>
+
+</databaseChangeLog>
