@@ -1,11 +1,16 @@
 var express = require('express');
 var router = express.Router();
+const Product = require('../models/product');
 
 // GET /products
-router.get('/', (req, res) => {
-  res.json({
-    message: 'GET /products endpoint',
-  });
+router.get('/', async (req, res) => {
+  try {
+    const products = await Product.findAll();
+    res.json(products);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server Error');
+  }
 });
 
 // // POST /products
