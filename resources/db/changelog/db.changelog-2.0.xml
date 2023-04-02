@@ -1,0 +1,54 @@
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+  <changeSet id="create-users-table" author="dave">
+    <createTable tableName="users">
+      <column name="id" type="INT" autoIncrement="true">
+        <constraints primaryKey="true" nullable="false" />
+      </column>
+      <column name="username" type="VARCHAR(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="first" type="VARCHAR(50)">
+        <constraints nullable="false"/>
+      </column>
+      <column name="last" type="VARCHAR(50)">
+        <constraints nullable="false"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="create-users-products-table" author="dave">
+    <createTable tableName="users_products">
+      <column name="user_id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+      <column name="product_id" type="INT">
+        <constraints nullable="false" primaryKey="true"/>
+      </column>
+    </createTable>
+  </changeSet>
+
+  <changeSet id="insert-test-data" author="dave">
+    <insert tableName="users">
+        <column name="id" value="1"/>
+        <column name="username" value="johndoe"/>
+        <column name="first" value="John"/>
+        <column name="last" value="Doe"/>
+    </insert>
+    <insert tableName="users">
+        <column name="id" value="2"/>
+        <column name="username" value="janedoe"/>
+        <column name="first" value="Jane"/>
+        <column name="last" value="Doe"/>
+    </insert>
+    <insert tableName="users">
+        <column name="id" value="3"/>
+        <column name="username" value="bobsmith"/>
+        <column name="first" value="Bob"/>
+        <column name="last" value="Smith"/>
+    </insert>
+</changeSet>
+
+</databaseChangeLog>
